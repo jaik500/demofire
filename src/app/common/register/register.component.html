@@ -1,0 +1,71 @@
+<form
+  class="example-form"
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-card mat-mdr-card>
+    <mat-card-header>
+      <h3>New Registration</h3>
+      <span class="example-spacer"></span>
+      <button type="button" mat-button [routerLink]="'/'"> Home</button>
+    </mat-card-header>
+    <!--If there is an error message, it should be displayed here-->
+    @if (errorMessage) {
+      <div>{{ errorMessage }}</div>
+    }
+
+    <mat-card-content>
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="username" formControlName="username" />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="email"
+          formControlName="email"
+          type="email"
+        />
+
+        @if(registerForm.get('email')?.errors?.['email'] &&
+        registerForm.get('email')?.['touched']) {
+        <p>Please enter a valid email address</p>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="password"
+          type="password"
+          formControlName="password"
+        />
+      </mat-form-field>
+
+     
+    </mat-card-content>
+
+    <div class="center margin-top">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="registerForm.invalid"
+      >
+        Register
+      </button>
+    </div>
+
+    <div class="center margin-top">
+      <!-- @if (authService.hasRole('Admin')) {
+        <a mat-raised-button color="accent" routerLink="/user">Login?</a>
+      } -->
+      <a mat-raised-button color="accent" routerLink="/login">Already have an account?</a>
+    </div>
+  </mat-card>
+</form>
+
+

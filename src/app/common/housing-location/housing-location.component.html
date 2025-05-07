@@ -1,0 +1,42 @@
+<section>
+    <form class="search sticky-top mt-3">
+      <input
+        type="text"
+        name="searchTerm"
+        [(ngModel)]="searchTerm"
+        placeholder="Filter by city or State"
+        #filter
+      />
+      <button class="primary" type="button" (click)="filterResults(filter.value)">
+        Search
+      </button>
+    </form>
+  </section>
+  
+  <section class="results">
+    <!--progresss while data loads-->
+    
+    @if (!filterdLocationList.length) {
+  
+        <mat-spinner ></mat-spinner>
+     
+    } 
+  
+    @for(housingLocation of filterdLocationList | houseFilter: searchTerm();
+    track housingLocation;){
+    <section class="listing" [routerLink]="['/details', housingLocation.id]">
+      <img
+        class="listing-photo"
+        [src]="housingLocation.photo"
+        alt="Exterior photo of {{ housingLocation.name }}"
+      />
+      <h4 class="listing-heading">{{ housingLocation.name }}</h4>
+      <p class="listing-location">
+        {{ housingLocation.city }}, {{ housingLocation.state }}
+      </p>
+    </section>
+    }
+  </section>
+  
+  
+

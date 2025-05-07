@@ -1,0 +1,51 @@
+<!--If there is an error message, it should be displayed here-->
+@if (errorMessage) {
+    <div>{{ errorMessage }}</div>
+    }
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-card mat-mdr-card>
+        <mat-card-header>
+          <h3>Login</h3>
+          <span class="example-spacer"></span>
+          <button type="button" mat-button routerLink="/">Home</button>
+        </mat-card-header>
+    
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email address" formControlName="email" />
+            <mat-icon matSuffix>email</mat-icon>
+            @if (email?.errors?.['required']) {
+            <mat-error>Email is required</mat-error>
+            } @if (email?.errors?.['email']) {
+            <mat-error>Please enter a correct email format</mat-error>
+            }
+          </mat-form-field>
+    
+          <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" formControlName="password" />
+            <mat-icon matSuffix>lock</mat-icon>
+            @if (password?.errors?.['required']) {
+            <mat-error>Password is required</mat-error>
+            }
+          </mat-form-field>
+        </mat-card-content>
+        
+    
+        <div class="center margin-top">
+          <button mat-raised-button color="primary" type="submit">Login</button>
+        </div>
+        <span class="center margin-top"
+          >New to our platform?
+          <a
+            class="sign-up-link"
+            routerLink="/register"
+            routerLinkActive="router-link-active"
+            >Sign Up!</a
+          ></span
+        >
+      </mat-card>
+    </form>
+    
