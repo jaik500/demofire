@@ -1,6 +1,76 @@
 
-
 <form class="example-form" 
+    [formGroup]="createPostForm"
+    (ngSubmit)="onSubmit()">
+
+    <h3 >Create Post</h3>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Title</mat-label>
+        <input matInput #message maxlength="256" placeholder="Post content" formControlName="title" autocomplete="off">
+        <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+
+        @if (title.invalid && (title.dirty || title.touched)) {
+            @if (title.hasError('required')) {
+                <p class="text-warn">Title is required</p>
+            }
+
+            @if (title.hasError("maxlength")) {
+                <p class="text-warn">Tile must not exceed 256 characters</p>
+            }
+        }
+    </mat-form-field>
+
+    <div class="display">
+        <mat-card class="width-left">
+            <mat-card-header>
+                <mat-card-title>Content</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field class="example-full-width" >
+                    <mat-label>Content area</mat-label>
+                    <textarea 
+                        matInput rows="10" 
+                        maxlength="5000" 
+                        placeholder="Post content here" 
+                        formControlName="content"
+                        (keyup)="onContentChange()"
+                        >
+                    </textarea>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+    
+        <mat-card class="width-right">
+        <mat-card-header>
+            <mat-card-title>Preview</mat-card-title>
+        </mat-card-header>
+            <mat-card-content class="blog-content">
+                <markdown [data]="contentData()"> </markdown>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div>
+        <input type="file" class="d-none" (change)="onCoverImageSelected(coverImageFileInput)" #coverImageFileInput>
+        <button mat-button type="button" (click)="coverImageFileInput.click()">Add Cover Image</button>
+    </div>
+
+    @if (createPostForm.getRawValue().coverImageUrl) {
+        <div>
+            <img [src]="createPostForm.getRawValue().coverImageUrl" alt="cover image" class="w-25">
+        </div>
+    }
+
+    <div class="example-button-row">
+        <button mat-flat-button type="submit" [disabled]="createPostForm.valid === false">Publish</button>
+    </div>
+
+</form>
+
+<!--  
+    <form class="example-form" 
     [formGroup]="createPostForm"
     (ngSubmit)="onSubmit()">
     
@@ -27,7 +97,14 @@
  
       <mat-form-field class="example-full-width" >
         <mat-label>Content</mat-label>
-        <textarea matInput rows="6" maxlength="5000" placeholder="Post content" formControlName="content"></textarea>
+        <div class="flex gap-4">
+            <textarea matInput rows="15" maxlength="5000" placeholder="Post content" formControlName="content"></textarea>
+            <div matInput rows="15" maxlength="5000">
+                <markdown [data]="'# This is the main heading'">
+
+                </markdown>
+            </div>
+        </div>
       </mat-form-field>
 
     
@@ -35,6 +112,8 @@
         <button mat-flat-button type="submit" [disabled]="createPostForm.valid === false">Publish</button>
     </div>
 
-  </form>
+  </form> -->
+
+
   
 

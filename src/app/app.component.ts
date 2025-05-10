@@ -10,20 +10,22 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';
 import { environment } from '../environments/environment';
+import { MainService } from './services/main.service';
 
 
 @Component({
     selector: 'app-root',
     imports: [
-        RouterModule,
-        CommonModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatCardModule,
-        FormsModule,
-        MatIconModule,
-        MatMenuModule,
-    ],
+    RouterModule,
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatCardModule,
+    FormsModule,
+    MatIconModule,
+    MatMenuModule,
+  
+],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
@@ -31,9 +33,11 @@ export class AppComponent {
   isProd = environment.prod;
 
   authService = inject(AuthService);
+  mainService = inject(MainService);
   readonly dialog = inject(MatDialog);
   title = signal('Hotspot Strats');
   showmenu = false;
+  hideUserMenu = signal(true);
 
   ngOnInit(): void {
     this.authService.user$.subscribe((user) => {

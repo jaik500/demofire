@@ -8,6 +8,8 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment.development';
+import { provideMarkdown } from 'ngx-markdown'
+import { provideStorage, getStorage } from '@angular/fire/storage';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +20,8 @@ export const appConfig: ApplicationConfig = {
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore (() => getFirestore()),
+    provideStorage(() => getStorage()),
+    provideMarkdown(),
+    
   ]
 };

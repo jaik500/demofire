@@ -1,8 +1,35 @@
 
 <mat-toolbar  color="primary"  class="sticky-top">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
+  @if (authService.currentUserSig()) {
+    <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu1" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #menu1="matMenu">
+      <button mat-menu-item>
+        <mat-icon>person</mat-icon>
+        <span routerLink="/">Profile</span>
+      </button>
+      <button mat-menu-item >
+        <mat-icon>message</mat-icon>
+        <span routerLink="/create-post">Create Post</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>work</mat-icon>
+        <span routerLink="/">Issues</span>
+      </button>
+
+      <button mat-menu-item disabled>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        <span routerLink="/">Settings</span>
+      </button>
+    </mat-menu>
+  }
+
   <span><mat-card-title>{{title() | uppercase}}</mat-card-title></span>
   <span class="example-spacer"></span>
 
@@ -12,12 +39,14 @@
 
    <!-- When a user logs in, he views the the following menu buttons-->
   @if (authService.currentUserSig()) {
+
     <div>
-      <span>Hi {{authService.currentUserSig()?.username}}</span>
       <button mat-button routerLink="/">Explore</button>
       <button mat-button routerLink="/">Courses</button>
       
       <button mat-button (click)="logout()" routerLink="/">Logout</button>
+      <button mat-button routerLink="/help">Help</button>
+
       <button
         mat-icon-button
         [matMenuTriggerFor]="menu"
@@ -25,6 +54,7 @@
       >
         <mat-icon>account_circle</mat-icon>
       </button>
+      
     
       <mat-menu #menu="matMenu">
         <button mat-menu-item>
@@ -34,6 +64,10 @@
         <button mat-menu-item >
           <mat-icon>message</mat-icon>
           <span routerLink="/create-post">Create Post</span>
+        </button>
+        <button mat-menu-item >
+          <mat-icon>dashboard</mat-icon>
+          <span routerLink="/dashboard">Dashboard</span>
         </button>
         <button mat-menu-item>
           <mat-icon>work</mat-icon>
@@ -50,6 +84,10 @@
         </button>
       </mat-menu>
     </div>
+
+    <div class="text-bg-light text-center">
+      <span><small>Hi {{authService.currentUserSig()?.username}}</small></span>
+    </div>
   } 
     
     
@@ -57,8 +95,9 @@
   @if (authService.currentUserSig() == null) {
     <button mat-button routerLink="/login">Login</button>
     <button mat-button routerLink="/register">Register</button>
-  }
     <button mat-button routerLink="/help">Help</button>
+  }
+   
 </mat-toolbar>
 
 @if (isProd === false) {
@@ -68,5 +107,5 @@
 }
 
 <section class="content">
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </section>

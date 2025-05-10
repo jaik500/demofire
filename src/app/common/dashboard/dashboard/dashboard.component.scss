@@ -1,0 +1,39 @@
+.heading {
+    min-width: 150px;
+    margin-left: 25px;
+    margin-right: 25px;
+
+
+    // .example-icon {
+    //   padding: 0 35px;
+    //   //flex: 1 1 auto;
+    // }
+    // .example-spacer {
+    //   flex: 1 1 auto;
+    // }
+
+    .card-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0px;
+    }
+
+  .left-text {
+    flex: 1 1 auto;
+  }
+
+  // .adjustments {
+  //   margin-top: 10px;
+  // }
+}
+
+.date {
+  color: slategray;
+  font-weight: 100;
+  
+}
+
+
+

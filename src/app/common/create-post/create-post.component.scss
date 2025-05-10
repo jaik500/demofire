@@ -1,16 +1,46 @@
 .example-form {
     min-width: 150px;
-    max-width: 900px;
-    width: 100%;
+    //max-width: 900px;
+    margin-left: 25px;
+    margin-right: 25px
   }
   
   .example-full-width {
     width: 100%;
+    margin-top: 30px;
   }
   
   td {
     padding-right: 8px;
   }
+
+  .example-button-row {
+    margin-top: 20px;
+  }
+
+.width-left {
+  width: 50%; 
+  margin-right: 10px;
+}
+
+.width-right {
+  width: 50%; 
+  margin-left: 10px;
+}
+
+.display {
+  display: flex;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+// Define h1 to h6 as appropriate
+// .blog-content h1 {
+//   font-size: 2rem;
+//   font-weight: 900;
+// }
+  
+  
 
 
   

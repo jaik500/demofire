@@ -3,6 +3,8 @@ import { HomeComponent } from './common/home/home.component';
 import { RegisterComponent } from './common/register/register.component';
 import { CreatePostComponent } from './common/create-post/create-post.component';
 import { LoginComponent } from './common/login/login.component';
+import { DashboardComponent } from './common/dashboard/dashboard/dashboard.component';
+
 
 export const routes: Routes = [
     {
@@ -25,6 +27,12 @@ export const routes: Routes = [
         path: 'create-post', component: CreatePostComponent,
         title: 'Create Post',
       },
+
+      {
+        path: 'dashboard', component: DashboardComponent,
+        title: 'Dashboard',
+      },
+
 
       {
         path: '',
