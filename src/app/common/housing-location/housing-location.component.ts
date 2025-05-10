@@ -9,11 +9,10 @@ import { HousingService } from '../../services/housing.service';
 import { HouseFilterPipe } from '../../pipes/house-filter.pipe';
 
 @Component({
-  selector: 'app-housing-location',
-  standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, MatProgressSpinnerModule, MatCardModule, HouseFilterPipe],
-  templateUrl: './housing-location.component.html',
-  styleUrl: './housing-location.component.scss'
+    selector: 'app-housing-location',
+    imports: [CommonModule, RouterModule, FormsModule, MatProgressSpinnerModule, MatCardModule, HouseFilterPipe],
+    templateUrl: './housing-location.component.html',
+    styleUrl: './housing-location.component.scss'
 })
 export class HousingLocationComponent {
 

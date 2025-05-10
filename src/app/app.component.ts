@@ -13,20 +13,19 @@ import { environment } from '../environments/environment';
 
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterModule,
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    FormsModule,
-    MatIconModule,
-    MatMenuModule,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [
+        RouterModule,
+        CommonModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        FormsModule,
+        MatIconModule,
+        MatMenuModule,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   isProd = environment.prod;

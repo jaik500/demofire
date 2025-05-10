@@ -12,9 +12,8 @@ import { AuthService } from '../../services/auth.service';
 
 
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  imports: [
+    selector: 'app-register',
+    imports: [
         MatCardModule,
         MatButtonModule,
         CommonModule,
@@ -23,9 +22,9 @@ import { AuthService } from '../../services/auth.service';
         MatCardModule,
         MatFormFieldModule,
         MatInputModule
-  ],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+    ],
+    templateUrl: './register.component.html',
+    styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
 

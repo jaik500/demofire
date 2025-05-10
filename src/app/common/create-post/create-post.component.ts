@@ -12,11 +12,10 @@ import { AuthService } from '../../services/auth.service';
 import { BlogpostService } from '../../services/blogpost.service';
 
 @Component({
-  selector: 'app-create-post',
-  standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDividerModule, MatIconModule, ReactiveFormsModule],
-  templateUrl: './create-post.component.html',
-  styleUrl: './create-post.component.scss'
+    selector: 'app-create-post',
+    imports: [FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDividerModule, MatIconModule, ReactiveFormsModule],
+    templateUrl: './create-post.component.html',
+    styleUrl: './create-post.component.scss'
 })
 export class CreatePostComponent {
 
